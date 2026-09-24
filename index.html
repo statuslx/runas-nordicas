@@ -18,6 +18,14 @@ main{max-width:1100px;margin:auto;padding:0 20px}section{padding:72px 0;border-b
 dialog{background:#151b18;color:var(--ink);border:1px solid var(--gold);border-radius:12px;max-width:520px;padding:28px}dialog::backdrop{background:#000b}.close{float:right}.small{font:12px system-ui,sans-serif;color:var(--muted)}
 footer{text-align:center;padding:38px;color:var(--muted);font-size:13px}
 @media(max-width:700px){main{padding:0 14px}section{padding:48px 0}nav{justify-content:flex-start;gap:18px;padding:12px 14px}.runes,.wyrdrow{grid-template-columns:repeat(4,1fr)}.wyrd{grid-column:3/4}.rune{min-height:96px;padding:7px}.glyph{font-size:36px}.cloth{min-height:500px;padding:26px 10px;border-width:7px;border-radius:9px}.cloth:before{inset:18px 10px}.stage{font-size:15px;margin:0 12px 18px}.drawn{min-height:350px;padding:12px 6px;gap:10px}.drawn .rune{width:92px;min-height:112px}#readingTitle{font-size:28px}.tableAett{grid-template-columns:repeat(8,34px);gap:4px;margin:11px auto}.tableRune{width:34px;height:47px;font-size:23px;border-radius:4px}.tableWyrd{margin-left:38px}.shufflePile .tableRune{left:calc(50% - 17px);top:105px}}
+
+/* Mesa organica: madeira visivel e pano irregular */
+.cloth{min-height:600px!important;border:0!important;border-radius:18px!important;background:linear-gradient(90deg,#4b2d19,#765035 18%,#51301c 38%,#81583a 58%,#52311d 78%,#70472b)!important;box-shadow:inset 0 0 55px #1b0d07,0 12px 30px #0009!important;padding:42px 34px!important;overflow:visible!important}
+.cloth:before{inset:28px 34px 34px!important;border-radius:48% 52% 46% 54%/4% 5% 6% 4%!important;transform:rotate(-.7deg)!important;background:#e8dfc9!important;box-shadow:0 5px 12px #160b0666,inset 0 0 28px #897a5e44!important;clip-path:polygon(1% 3%,8% 1%,17% 2%,26% 1%,36% 2%,47% 1%,57% 2%,68% 1%,78% 2%,88% 1%,99% 3%,98% 14%,99% 27%,98% 39%,99% 52%,98% 66%,99% 79%,98% 91%,96% 99%,85% 98%,74% 99%,63% 98%,52% 99%,41% 98%,30% 99%,19% 98%,8% 99%,2% 97%,1% 84%,2% 70%,1% 56%,2% 42%,1% 29%,2% 16%)!important}
+.stage{margin:0 auto 20px!important;background:transparent!important;color:#332a21!important;font-weight:700!important}
+.drawn{min-height:430px!important;align-content:center!important}
+.tableAett{position:relative;z-index:3!important}.tableWyrd{position:relative;z-index:3!important}.tableRune{position:relative;z-index:4!important}
+@media(max-width:700px){.cloth{min-height:540px!important;padding:32px 16px!important}.cloth:before{inset:18px 14px 24px!important}.drawn{min-height:400px!important}.tableAett{grid-template-columns:repeat(8,32px)!important;gap:3px!important}.tableRune{width:32px!important;height:44px!important;font-size:22px!important}}
 </style>
 </head>
 <body>
