@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Runas Nórdicas — Elder Futhark</title>
+<style>
+:root{--bg:#0d1110;--panel:#151b18;--ink:#eee9dc;--muted:#aaa99f;--gold:#c7a45b;--line:#343b35;--red:#8e3d32}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#263029 0,#0d1110 42%);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.55}
+header{min-height:78vh;display:grid;place-items:center;text-align:center;padding:32px 20px;border-bottom:1px solid var(--line)}
+.hero{max-width:900px}.mark{font-size:72px;color:var(--gold);letter-spacing:.12em}.eyebrow{letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font:12px system-ui,sans-serif}
+h1{font-size:clamp(44px,9vw,88px);line-height:.95;margin:16px 0}h2{font-size:clamp(30px,6vw,52px);margin:.2em 0}.lead{font-size:clamp(18px,2.5vw,23px);color:#d3d0c5;max-width:700px;margin:20px auto}
+nav{position:sticky;top:0;z-index:5;background:#0d1110e8;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:22px;justify-content:center;overflow:auto;padding:14px}
+nav a{color:var(--ink);text-decoration:none;white-space:nowrap;font:600 13px system-ui,sans-serif}nav a:hover{color:var(--gold)}
+main{max-width:1100px;margin:auto;padding:0 20px}section{padding:72px 0;border-bottom:1px solid var(--line)}.note{color:var(--muted);max-width:820px}.fact{border-left:3px solid var(--gold);padding:12px 18px;background:#151b18;margin:24px 0}
+.aett{margin:34px 0}.aett h3{color:var(--gold);font-size:20px}.runes{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}.rune{border:1px solid var(--line);background:linear-gradient(145deg,#1c231f,#111613);border-radius:8px;min-height:122px;display:grid;place-items:center;text-align:center;padding:10px;cursor:pointer;transition:.2s}.rune:hover{transform:translateY(-3px);border-color:var(--gold)}.glyph{font-size:45px;line-height:1}.rune b{font:600 12px system-ui,sans-serif}.wyrdrow{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:10px}.wyrd{grid-column:5/6}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:10px}.card h3{margin-top:0;color:var(--gold)}button{border:1px solid var(--gold);background:transparent;color:var(--ink);padding:11px 16px;border-radius:6px;cursor:pointer;font-weight:700}button:hover{background:var(--gold);color:#111}
+#readingArea{display:none;margin-top:28px}.cloth{min-height:420px;border:1px solid #4c5149;border-radius:50% 50% 44% 44%;background:radial-gradient(circle,#202a24,#101512 72%);position:relative;overflow:hidden;padding:30px}.stage{text-align:center;color:var(--muted);margin-bottom:15px}.drawn{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}.drawn .rune{width:110px}.controls{text-align:center;margin-top:18px}
+dialog{background:#151b18;color:var(--ink);border:1px solid var(--gold);border-radius:12px;max-width:520px;padding:28px}dialog::backdrop{background:#000b}.close{float:right}.small{font:12px system-ui,sans-serif;color:var(--muted)}
+footer{text-align:center;padding:38px;color:var(--muted);font-size:13px}
+@media(max-width:700px){.runes,.wyrdrow{grid-template-columns:repeat(4,1fr)}.wyrd{grid-column:3/4}.rune{min-height:105px}.glyph{font-size:38px}}
+</style>
+</head>
+<body>
+<header><div class="hero"><div class="mark">ᚱ</div><div class="eyebrow">Elder Futhark · 24 runas + Wyrd</div><h1>RUNAS NÓRDICAS</h1><p class="lead">Conhece as runas, a sua história e experimenta diferentes formas contemporâneas de leitura, mantendo separado aquilo que é documentação histórica daquilo que pertence à prática divinatória moderna.</p><a href="#runas"><button>Entrar</button></a></div></header>
+<nav><a href="#runas">As Runas</a><a href="#leituras">Leituras</a><a href="#historia">História</a><a href="#metodo">Como funciona</a></nav>
+<main>
+<section id="runas"><div class="eyebrow">O conjunto</div><h2>As 25 runas</h2><p class="note">As 24 runas históricas do Elder Futhark estão organizadas nos três Ættir tradicionais. A runa branca, Wyrd, aparece separada porque é uma adição moderna e não faz parte do Elder Futhark histórico.</p>
+<div id="aetts"></div></section>
+<section id="leituras"><div class="eyebrow">Cinco métodos</div><h2>Escolhe a leitura</h2><div class="cards">
+<div class="card"><h3>Runa do Dia</h3><p>1 runa. Uma leitura simples para reflexão sobre o tema dominante do momento.</p><button onclick="startReading('Runa do Dia',1)">Começar</button></div>
+<div class="card"><h3>Três Runas</h3><p>3 posições: o que está por detrás, o que se manifesta e aquilo a que conduz.</p><button onclick="startReading('Três Runas',3)">Começar</button></div>
+<div class="card"><h3>Cruz Rúnica</h3><p>5 posições: essência, origem, desenvolvimento, raiz oculta e orientação.</p><button onclick="startReading('Cruz Rúnica',5)">Começar</button></div>
+<div class="card"><h3>Nove Runas</h3><p>9 runas numa estrutura predeterminada, para uma leitura mais ampla.</p><button onclick="startReading('Nove Runas',9)">Começar</button></div>
+<div class="card"><h3>Lançamento das Runas</h3><p>9 runas em disposição livre; proximidade, distância, agrupamentos e orientação entram na leitura.</p><button onclick="startReading('Lançamento das Runas',9,true)">Começar</button></div>
+</div>
+<div id="readingArea"><h3 id="readingTitle"></h3><div class="cloth"><div class="stage" id="stage"></div><div class="drawn" id="drawn"></div></div><div class="controls"><button id="nextBtn" onclick="nextStage()">Virar e baralhar</button></div></div>
+</section>
+<section id="historia"><div class="eyebrow">Contexto factual</div><h2>História das runas</h2>
+<p>As runas são caracteres de sistemas de escrita usados por povos germânicos. O <strong>Elder Futhark</strong>, com 24 sinais, é a forma rúnica mais antiga amplamente atestada e foi utilizada aproximadamente entre os séculos II e VIII d.C. O nome “Futhark” deriva dos sons das primeiras seis runas: F, U, Þ, A, R e K.</p>
+<p>Com o tempo surgiram outros alfabetos rúnicos, incluindo o Younger Futhark, associado à Era Viking, e variantes anglo-saxónicas. As inscrições sobreviventes aparecem em pedra, metal, madeira e outros objetos.</p>
+<div class="fact"><strong>História ≠ adivinhação moderna.</strong> Existem referências antigas a práticas de sorteio e adivinhação entre povos germânicos, mas não há documentação histórica suficiente para afirmar que os métodos de tiragem modernos — nem os significados esotéricos detalhados hoje atribuídos a cada runa — reproduzem um sistema divinatório viking conhecido. A “runa branca” ou Wyrd é uma criação moderna.</div>
+</section>
+<section id="metodo"><div class="eyebrow">Ritual da aplicação</div><h2>Como começa uma leitura</h2><p>O conjunto é apresentado primeiro <strong>com todas as runas viradas para cima</strong>, organizado pelos três Ættir. A Wyrd fica separada, ligeiramente à direita e alinhada com o segundo Ætt. Só depois as runas são viradas com a face para baixo, baralhadas e retiradas para a leitura escolhida.</p></section>
+</main>
+<footer>Runas Nórdicas · informação histórica e experiência interpretativa claramente separadas</footer>
+<dialog id="modal"><button class="close" onclick="modal.close()">×</button><div id="modalBody"></div></dialog>
+<script>
+const runes=[
+['ᚠ','Fehu','riqueza, recursos, movimento'],['ᚢ','Uruz','força, vitalidade, resistência'],['ᚦ','Thurisaz','força reativa, desafio, proteção'],['ᚨ','Ansuz','palavra, comunicação, inspiração'],['ᚱ','Raidho','viagem, percurso, ordem'],['ᚲ','Kenaz','tocha, conhecimento, clareza'],['ᚷ','Gebo','dádiva, troca, reciprocidade'],['ᚹ','Wunjo','alegria, harmonia, satisfação'],
+['ᚺ','Hagalaz','granizo, perturbação, transformação'],['ᚾ','Nauthiz','necessidade, restrição, resistência'],['ᛁ','Isa','gelo, pausa, imobilidade'],['ᛃ','Jera','ano, colheita, ciclo'],['ᛇ','Eihwaz','teixo, resistência, transição'],['ᛈ','Perthro','incerteza, destino, mistério'],['ᛉ','Algiz','proteção, defesa, ligação'],['ᛊ','Sowilo','sol, energia, êxito'],
+['ᛏ','Tiwaz','justiça, coragem, dever'],['ᛒ','Berkano','bétula, crescimento, renovação'],['ᛖ','Ehwaz','cavalo, parceria, movimento'],['ᛗ','Mannaz','ser humano, comunidade, consciência'],['ᛚ','Laguz','água, fluxo, intuição'],['ᛜ','Ingwaz','fertilidade, potencial, conclusão'],['ᛞ','Dagaz','dia, mudança, despertar'],['ᛟ','Othala','herança, lar, ancestralidade']
+];
+const labels=["1.º Ætt — Freyr/Freyja","2.º Ætt — Heimdall","3.º Ætt — Týr"];
+const aetts=document.getElementById('aetts');
+for(let a=0;a<3;a++){let d=document.createElement('div');d.className='aett';d.innerHTML='<h3>'+labels[a]+'</h3><div class="runes">'+runes.slice(a*8,a*8+8).map((r,i)=>'<div class="rune" onclick="showRune('+(a*8+i)+')"><span class="glyph">'+r[0]+'</span><b>'+r[1]+'</b></div>').join('')+'</div>';aetts.appendChild(d);if(a===1){let w=document.createElement('div');w.className='wyrdrow';w.innerHTML='<div class="rune wyrd" onclick="showWyrd()"><span class="glyph">○</span><b>Wyrd</b></div>';aetts.appendChild(w)}}
+function showRune(i){let r=runes[i];modalBody.innerHTML='<div class="glyph">'+r[0]+'</div><h2>'+r[1]+'</h2><p>'+r[2]+'.</p><p class="small">Palavras-chave interpretativas modernas; não devem ser confundidas com uma definição histórica única e comprovada.</p>';modal.showModal()}
+function showWyrd(){modalBody.innerHTML='<div class="glyph">○</div><h2>Wyrd · Runa Branca</h2><p>Usada modernamente para representar o desconhecido, o destino ou aquilo que ainda não se revelou.</p><p class="small">Não pertence ao Elder Futhark histórico. Foi introduzida em práticas rúnicas modernas.</p>';modal.showModal()}
+let state={step:0,count:1,name:'',free:false};
+function startReading(name,count,free=false){state={step:0,count,name,free};readingArea.style.display='block';readingTitle.textContent=name;drawn.innerHTML='';stage.textContent='As 25 runas estão voltadas para cima, separadas pelos Ættir. Observa o conjunto antes de começar.';nextBtn.textContent='Virar e baralhar';readingArea.scrollIntoView({behavior:'smooth'})}
+function nextStage(){if(state.step===0){state.step=1;stage.textContent='As runas foram viradas com a face para baixo. Agora são baralhadas.';nextBtn.textContent='Retirar '+state.count+(state.count===1?' runa':' runas');return}
+let pool=[...runes.map((r,i)=>i),24];for(let i=pool.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+let picks=pool.slice(0,state.count);drawn.innerHTML=picks.map((i,n)=>{if(i===24)return '<div class="rune" onclick="showWyrd()"><span class="glyph">○</span><b>'+(n+1)+'. Wyrd</b></div>';let r=runes[i];return '<div class="rune" onclick="showRune('+i+')"><span class="glyph">'+r[0]+'</span><b>'+(n+1)+'. '+r[1]+'</b></div>'}).join('');
+stage.textContent=state.free?'As runas foram lançadas. Nesta primeira versão, observa o conjunto e abre cada runa para consultar o seu significado.':'As runas foram retiradas pela ordem da leitura. Toca em cada uma para consultar o significado.';
+nextBtn.textContent='Nova leitura';nextBtn.onclick=()=>startReading(state.name,state.count,state.free);state.step=2}
+</script>
+</body></html>
