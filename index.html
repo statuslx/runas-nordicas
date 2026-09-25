@@ -79,6 +79,13 @@ const runes=[
 ];
 const labels=["1.º Ætt — Freyr/Freyja","2.º Ætt — Heimdall","3.º Ætt — Týr"];
 const aetts=document.getElementById('aetts');
+const readingArea=document.getElementById('readingArea');
+const readingTitle=document.getElementById('readingTitle');
+const drawn=document.getElementById('drawn');
+const stage=document.getElementById('stage');
+const nextBtn=document.getElementById('nextBtn');
+const modal=document.getElementById('modal');
+const modalBody=document.getElementById('modalBody');
 for(let a=0;a<3;a++){let d=document.createElement('div');d.className='aett';d.innerHTML='<h3>'+labels[a]+'</h3><div class="runes">'+runes.slice(a*8,a*8+8).map((r,i)=>'<div class="rune" onclick="showRune('+(a*8+i)+')"><span class="glyph">'+r[0]+'</span><b>'+r[1]+'</b></div>').join('')+'</div>';aetts.appendChild(d);if(a===1){let w=document.createElement('div');w.className='wyrdrow';w.innerHTML='<div class="rune wyrd" onclick="showWyrd()"><span class="glyph"></span><b>Wyrd</b></div>';aetts.appendChild(w)}}
 function showRune(i){let r=runes[i];modalBody.innerHTML='<div class="glyph">'+r[0]+'</div><h2>'+r[1]+'</h2><p>'+r[2]+'.</p><p class="small">Palavras-chave interpretativas modernas; não devem ser confundidas com uma definição histórica única e comprovada.</p>';modal.showModal()}
 function showWyrd(){modalBody.innerHTML='<div class="glyph"></div><h2>Wyrd · Runa Branca</h2><p>Usada modernamente para representar o desconhecido, o destino ou aquilo que ainda não se revelou.</p><p class="small">Não pertence ao Elder Futhark histórico. Foi introduzida em práticas rúnicas modernas.</p>';modal.showModal()}
